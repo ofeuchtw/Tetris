@@ -148,12 +148,12 @@ public class GamePlay extends JPanel implements ActionListener {
 		
 		int[][] lastCoords = new int[4][2];
 		lastCoords = currentCoords.clone();
-		boolean fuk = false;
+		boolean outOfBounds = false;
 		
 		for(int i = 0; i < currentCells.length; i++) {
 			if(currentCells[i].getRow() < 0 || currentCells[i].getCol() < 0 || currentCells[i].getRow() > 19 || currentCells[i].getCol() > 9) {
 				currentCoords = lastCoords.clone();
-				fuk = true;
+				outOfBounds = true;
 				break;
 			} else {
 				currentCoords[i][0] = currentCells[i].getRow();
@@ -161,7 +161,7 @@ public class GamePlay extends JPanel implements ActionListener {
 			}
 		}
 
-		if(fuk) {
+		if(outOfBounds) {
 			for(int j = 0; j < 4; j++) {
 				board[currentCoords[j][0]][currentCoords[j][1]] = currentCells[j];
 			}
